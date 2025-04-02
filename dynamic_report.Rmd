@@ -3,6 +3,27 @@ title: My dynamic report
 output: html_fragment
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+library(tidyverse)
+
+# Load data from the published Google Sheet CSV
+csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBcXpQL2dO9NrRDs1qhCm0ZRaOiotvDzKJYXxynh0JwBucUliUm2B-hoGpuUG1vS7vPA8Yl9nArLJu/pub?gid=192450215&single=true&output=csv"
+logged_data <- read_csv(csv_url)
+
+# Rename variables
+latest_data <- logged_data %>%
+  rename(
+    timestamp = 1,
+    time = 2,
+    brand = 3,
+    rating = 4,
+    style = 5,
+    comment = 6
+  )
+```
+
 ## Observing <span class="custom-font">Streetwear</span> Trends in Auckland
 
 ----------------------------------------------------------------------------------------------
@@ -38,27 +59,6 @@ td {
     font-size: 14px;
 }
 
-```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-
-library(tidyverse)
-
-# Load data from the published Google Sheet CSV
-csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBcXpQL2dO9NrRDs1qhCm0ZRaOiotvDzKJYXxynh0JwBucUliUm2B-hoGpuUG1vS7vPA8Yl9nArLJu/pub?gid=192450215&single=true&output=csv"
-logged_data <- read_csv(csv_url)
-
-# Rename variables
-latest_data <- logged_data %>%
-  rename(
-    timestamp = 1,
-    time = 2,
-    brand = 3,
-    rating = 4,
-    style = 5,
-    comment = 6
-  )
 ```
 
 ```{r summary-values, echo=FALSE}
