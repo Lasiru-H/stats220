@@ -89,7 +89,6 @@ The average rating across all responses is **`r round(mean(latest_data$rating), 
 ----------------------------------------------------------------------------------------------
 
 ```{r outfit-style-plot, echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 
 ggplot(latest_data, aes(x = style)) +
   geom_bar(fill = "steelblue") +
@@ -102,7 +101,6 @@ ggplot(latest_data, aes(x = style)) +
 ----------------------------------------------------------------------------------------------
 
 ```{r time-of-day-plot, echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 
 ggplot(latest_data, aes(x = time)) +
   geom_bar(fill = "darkorange") +
