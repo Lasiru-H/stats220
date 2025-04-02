@@ -1,0 +1,66 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## Clothing Brand and Style Preferences Report
+
+This dynamic report explores trends and preferences in clothing brands, styles, and user ratings based on self-logged survey data.
+
+The dataset includes responses with time stamps, preferred clothing brands, ratings (on a scale), style descriptors, and optional comments. This analysis helps us understand which brands are most popular, how users rate their outfits, and how styles are distributed.
+
+We analyse a total of `r nrow(latest_data)` logged entries.  
+The average rating across all responses is `r round(mean(latest_data$rating), 2)`, with the highest rating being `r max(latest_data$rating)` and the lowest `r min(latest_data$rating)`.
+
+
+```{r}
+# Loading tidyverse package
+library(tidyverse)
+
+# Reading the published CSV file into the data frame
+csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQBcXpQL2dO9NrRDs1qhCm0ZRaOiotvDzKJYXxynh0JwBucUliUm2B-hoGpuUG1vS7vPA8Yl9nArLJu/pub?gid=192450215&single=true&output=csv"
+logged_data <- read_csv(csv_url)
+
+# Renaming the variabes in the data frame
+latest_data <- logged_data %>%
+  rename(timestamp = 1,
+         time = 2,
+         brand = 3,
+         rating = 4,
+         style = 5,
+         comment = 6)
+
+# Check structure of data
+glimpse(latest_data)
+
+# Number of entries (rows)
+num_entries <- nrow(latest_data)
+
+# Mean rating
+mean_rating <- mean(latest_data$rating, na.rm = TRUE) %>% round(2)
+
+# Maximum rating
+max_rating <- max(latest_data$rating, na.rm = TRUE)
+
+# Minimum rating
+min_rating <- min(latest_data$rating, na.rm = TRUE)
+```
+
+### Summary Stats
+
+- Total number of entries: `r num_entries`
+- Mean rating (by me): `r mean_rating`
+- Highest rating: `r max_rating`
+- Lowest rating: `r min_rating`
+
+These figures summarise how people scored according to my personal fashion ratings. A mean rating of `r mean_rating` shows the general quality of outfits I’ve come across — pretty solid overall!
+
