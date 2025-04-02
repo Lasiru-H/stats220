@@ -24,7 +24,7 @@ latest_data <- logged_data %>%
   )
 ```
 
-## Observing <span class="custom-font">Streetwear</span> Trends in Auckland
+## Observing class="custom-font">Streetwear Trends in Auckland
 
 ----------------------------------------------------------------------------------------------
 
