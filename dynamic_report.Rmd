@@ -24,7 +24,7 @@ latest_data <- logged_data %>%
   )
 ```
 
-## Observing class="custom-font">Streetwear Trends in Auckland
+## Observing Streetwear Trends in Auckland
 
 ----------------------------------------------------------------------------------------------
 
