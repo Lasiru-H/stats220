@@ -17,14 +17,18 @@ body {
     font-family: Big Caslon, Big Caslon;
     font-size: 18px;
     background-color: #FAF9F6; 
-    color: #777; 
+    color: #555; 
 }
 
 h1, h2, h3 {
     font-weight: bold;
-    color: #444; 
+    color: #222; 
 }
 
+.custom-font {
+    font-family: noteworthy, noteworthy;
+    color: #222; 
+}
 ```
 
 ```{r setup, include=FALSE}
@@ -88,10 +92,19 @@ ggplot(latest_data, aes(x = style)) +
 ----------------------------------------------------------------------------------------------
 
 ```{r time-of-day-plot, echo=FALSE}
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
 
 ggplot(latest_data, aes(x = time)) +
   geom_bar(fill = "darkorange") +
   labs(title = "Observations by Time of Day", x = "Time of Day", y = "Number of Observations") 
 ```
 
+### Distribution of rating by time
+
+```{r, echo=FALSE}
+
+ggplot(latest_data) +
+  geom_bar(aes(x = style, fill = rating)) +
+  labs(title = "Rating distribution across time",
+       x = "Outfit Style",
+       y = "Number of people")
+```
